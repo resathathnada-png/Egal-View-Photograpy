@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="si" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Egale View Photography | Premium Cinematic Sri Lankan Studio & AI Assistant</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Noto+Sans+Sinhala:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-deep: #050505;
+            --bg-glass: rgba(18, 18, 22, 0.7);
+            --bg-glass-card: rgba(25, 25, 32, 0.5);
+            --gold-primary: #D4AF37;
+            --gold-light: #F3E5AB;
+            --gold-gradient: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+            --neon-blue: #00f3ff;
+            --neon-glow: 0 0 20px rgba(0, 243, 255, 0.4);
+            --gold-glow: 0 0 25px rgba(212, 175, 55, 0.3);
+            --text-main: #FFFFFF;
+            --text-muted: #A0A0AB;
+            --border-glass: rgba(212, 175, 55, 0.2);
+            --border-neon: rgba(0, 243, 255, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', 'Noto Sans Sinhala', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Particle Background Canvas */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-deep);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold-primary);
+            border-radius: 4px;
+        }
+
+        /* Glassmorphism Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border-glass);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            -webkit-text-fill-color: var(--gold-primary);
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--gold-light);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .nav-ai-btn {
+            background: linear-gradient(135deg, rgba(0, 243, 255, 0.1), rgba(212, 175, 55, 0.1));
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+            padding: 8px 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: var(--neon-glow);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-ai-btn:hover {
+            background: var(--neon-blue);
+            color: var(--bg-deep);
+            box-shadow: 0 0 30px var(--neon-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+            z-index: 1;
+        }
+
+        .hero-bg-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(18, 18, 22, 0.3) 0%, rgba(5, 5, 5, 0.95) 100%),
+                        url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2000&q=80') no-repeat center center/cover;
+            z-index: -1;
+            filter: brightness(0.4);
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--border-glass);
+            border-radius: 30px;
+            color: var(--gold-light);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            box-shadow: var(--gold-glow);
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-gold {
+            background: var(--gold-gradient);
+            color: var(--bg-deep);
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: var(--gold-glow);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 35px rgba(212, 175, 55, 0.6);
+        }
+
+        .btn-glass {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            color: var(--text-main);
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-glass:hover {
+            border-color: var(--gold-primary);
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Section Layouts */
+        section {
+            padding: 100px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-header span {
+            color: var(--gold-primary);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .section-header h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 3vw, 3rem);
+            font-weight: 700;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature-box {
+            background: var(--bg-glass-card);
+            border: 1px solid var(--border-glass);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-box i {
+            color: var(--gold-primary);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-box h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .feature-box p {
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-glass);
+            box-shadow: var(--gold-glow);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--bg-glass-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 40px 30px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gold-gradient);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold-primary);
+            box-shadow: var(--gold-glow);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-primary);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            border: 1px solid var(--border-glass);
+        }
+
+        .service-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Portfolio Gallery */
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            color: var(--text-muted);
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--gold-gradient);
+            color: var(--bg-deep);
+            border-color: transparent;
+            font-weight: 700;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 350px;
+            border: 1px solid var(--border-glass);
+            cursor: pointer;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(5,5,5,0.9) 0%, rgba(5,5,5,0.2) 60%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay span {
+            color: var(--gold-primary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .portfolio-overlay h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+        }
+
+        /* Equipment Section */
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .equipment-card {
+            background: var(--bg-glass-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .equipment-card:hover {
+            border-color: var(--neon-blue);
+            box-shadow: var(--neon-glow);
+            transform: translateY(-5px);
+        }
+
+        .equipment-card i {
+            font-size: 2.5rem;
+            color: var(--neon-blue);
+            margin-bottom: 20px;
+        }
+
+        .equipment-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .equipment-card p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Booking & Contact Section Container */
+        .contact-booking-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .form-container, .contact-info-box {
+            background: var(--bg-glass-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(15px);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .form-control {
+            width: 100%;
+            background: rgba(5, 5, 5, 0.6);
+            border: 1px solid var(--border-glass);
+            padding: 14px 20px;
+            border-radius: 10px;
+            color: var(--text-main);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--gold-primary);
+            box-shadow: var(--gold-glow);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            height: 120px;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .contact-icon-wrap {
+            width: 50px;
+            height: 50px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--border-glass);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-primary);
+            font-size: 1.2rem;
+        }
+
+        .contact-text h5 {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 3px;
+        }
+
+        .contact-text p, .contact-text a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        .contact-text a:hover {
+            color: var(--gold-light);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-btn {
+            width: 45px;
+            height: 45px;
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background: var(--gold-gradient);
+            color: var(--bg-deep);
+            border-color: transparent;
+            transform: translateY(-3px);
+        }
+
+        /* Futurist AI Voice Assistant Modal / Floating Widget */
+        .ai-assistant-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 2000;
+        }
+
+        .ai-trigger-bubble {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #050505, #121216);
+            border: 2px solid var(--neon-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--neon-glow);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .ai-trigger-bubble:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 35px var(--neon-blue);
+        }
+
+        .ai-trigger-bubble i {
+            font-size: 1.8rem;
+            color: var(--neon-blue);
+        }
+
+        .ai-pulse-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid var(--neon-blue);
+            animation: pulseRing 2s infinite;
+            opacity: 0;
+        }
+
+        @keyframes pulseRing {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.6); opacity: 0; }
+        }
+
+        /* AI Assistant Full Chat Modal */
+        .ai-modal {
+            position: fixed;
+            bottom: 110px;
+            right: 30px;
+            width: 400px;
+            max-width: calc(100vw - 40px);
+            height: 550px;
+            background: rgba(10, 10, 15, 0.95);
+            border: 1px solid var(--border-neon);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), var(--neon-glow);
+            backdrop-filter: blur(20px);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 2001;
+            transform: scale(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .ai-modal.active {
+            transform: scale(1);
+        }
+
+        .ai-modal-header {
+            padding: 20px;
+            background: rgba(0, 243, 255, 0.05);
+            border-bottom: 1px solid var(--border-neon);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ai-header-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .ai-avatar-small {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--neon-blue) 0%, transparent 70%);
+            border: 1px solid var(--neon-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bg-deep);
+            font-weight: bold;
+            box-shadow: var(--neon-glow);
+        }
+
+        .ai-header-info h4 {
+            font-size: 1rem;
+            color: var(--neon-blue);
+            letter-spacing: 1px;
+        }
+
+        .ai-header-info span {
+            font-size: 0.75srem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .ai-header-info span::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #00ff66;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px #00ff66;
+        }
+
+        .ai-close-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .ai-close-btn:hover {
+            color: var(--text-main);
+        }
+
+        .ai-chat-body {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .ai-message {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .ai-message.bot {
+            background: rgba(0, 243, 255, 0.08);
+            border: 1px solid var(--border-neon);
+            color: var(--text-main);
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+        }
+
+        .ai-message.user {
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--border-glass);
+            color: var(--gold-light);
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+
+        .ai-quick-prompts {
+            padding: 10px 20px;
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            background: rgba(5, 5, 10, 0.5);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .quick-prompt-chip {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            color: var(--text-muted);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .quick-prompt-chip:hover {
+            border-color: var(--neon-blue);
+            color: var(--neon-blue);
+        }
+
+        .ai-modal-footer {
+            padding: 15px 20px;
+            background: rgba(10, 10, 15, 0.9);
+            border-top: 1px solid var(--border-neon);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .ai-voice-trigger {
+            width: 45px;
+            height: 45px;
+            background: rgba(0, 243, 255, 0.1);
+            border: 1px solid var(--neon-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neon-blue);
+            cursor: pointer;
+            transition: all 0.3s;
+            flex-shrink: 0;
+            box-shadow: var(--neon-glow);
+        }
+
+        .ai-voice-trigger.listening {
+            background: var(--neon-blue);
+            color: var(--bg-deep);
+            animation: micPulse 1.2s infinite;
+        }
+
+        @keyframes micPulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 243, 255, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 243, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 243, 255, 0); }
+        }
+
+        .ai-text-input {
+            flex: 1;
+            background: rgba(5, 5, 5, 0.8);
+            border: 1px solid var(--border-glass);
+            padding: 10px 15px;
+            border-radius: 25px;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .ai-text-input:focus {
+            border-color: var(--neon-blue);
+        }
+
+        /* Voice Wave Visualizer Overlay inside chat when listening */
+        .voice-wave-container {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            padding: 10px;
+            background: rgba(0, 243, 255, 0.05);
+            border-top: 1px dashed var(--border-neon);
+        }
+
+        .voice-wave-container.active {
+            display: flex;
+        }
+
+        .wave-bar {
+            width: 4px;
+            height: 20px;
+            background: var(--neon-blue);
+            border-radius: 2px;
+            animation: waveAnim 0.8s infinite ease-in-out alternate;
+        }
+
+        .wave-bar:nth-child(2) { animation-delay: 0.2s; }
+        .wave-bar:nth-child(3) { animation-delay: 0.4s; }
+        .wave-bar:nth-child(4) { animation-delay: 0.1s; }
+        .wave-bar:nth-child(5) { animation-delay: 0.3s; }
+
+        @keyframes waveAnim {
+            0% { height: 5px; }
+            100% { height: 30px; }
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(3, 3, 5, 0.95);
+            border-top: 1px solid var(--border-glass);
+            padding: 50px 20px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media(max-width: 968px) {
+            .about-grid, .contact-booking-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Particle Background Canvas -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fa-solid fa-camera-retro"></i> EGALE VIEW
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#equipment">Equipment</a></li>
+                <li><a href="#booking">Booking</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="nav-ai-btn" onclick="toggleAIModal()">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Egale AI Assistant
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fa-solid fa-crown"></i> Premier Sri Lankan Studio
+            </div>
+            <h1>EGALE VIEW PHOTOGRAPHY</h1>
+            <p>Capturing Your Beautiful Moments With Cinematic Vision</p>
+            <div class="hero-buttons">
+                <button class="btn-gold" onclick="toggleAIModal()">Start AI Assistant</button>
+                <a href="#portfolio" class="btn-glass">View Portfolio</a>
+                <a href="#booking" class="btn-gold" style="background:var(--bg-glass); border:1px solid var(--border-glass); color:var(--text-main);">Book Your Shoot</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about">
+        <div class="section-header">
+            <span>Discover Our Story</span>
+            <h2>Sri Lanka's Cinematic Visionaries</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>Egale View Photography is a premier professional photography and videography studio based in Sri Lanka. We specialize in turning your priceless milestones into cinematic masterpieces, blending technical precision with artistic emotion.</p>
+                <p>From breathtaking Kandyan and modern beach weddings to high-end commercial video productions, wildlife excursions, and cinematic aerial drone moments across the island, our commitment is delivering elite visual excellence.</p>
+                <div class="about-features">
+                    <div class="feature-box">
+                        <i class="fa-solid fa-video"></i>
+                        <h4>4K Ultra HD</h4>
+                        <p>Immaculate visual quality and clarity.</p>
+                    </div>
+                    <div class="feature-box">
+                        <i class="fa-solid fa-helicopter"></i>
+                        <h4>Aerial Drone</h4>
+                        <p>Spectacular perspective from above.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=1000&q=80" alt="Cinematic Sri Lankan Photography">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="section-header">
+            <span>What We Offer</span>
+            <h2>Our Professional Services</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-ring"></i></div>
+                <h3>Wedding Photography</h3>
+                <p>Capturing authentic emotions, romantic aesthetics, and timeless heritage moments of your special day.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-film"></i></div>
+                <h3>Wedding Videography</h3>
+                <p>Cinematic wedding films with emotional storytelling, professional color grading, and dramatic sound design.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+                <h3>Drone Aerial Photography</h3>
+                <p>Breathtaking high-altitude panoramic shots and sweeping cinematic footage of scenic Sri Lankan landscapes.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
+                <h3>Event Coverage</h3>
+                <p>Comprehensive coverage for corporate gatherings, private galas, parties, and cultural celebrations.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-clapperboard"></i></div>
+                <h3>Cinematic Video Production</h3>
+                <p>Commercial ads, music videos, and documentary films produced with state-of-the-art cinematic equipment.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fa-solid fa-wand-magic"></i></div>
+                <h3>Photo Editing & 4K</h3>
+                <p>High-end retouching, color balancing, and 4K Ultra HD video editing delivering elite broadcast quality.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Gallery -->
+    <section id="portfolio">
+        <div class="section-header">
+            <span>Visual Showcase</span>
+            <h2>Portfolio Gallery</h2>
+        </div>
+        <div class="portfolio-filters">
+            <button class="filter-btn active" onclick="filterPortfolio('all')">All Works</button>
+            <button class="filter-btn" onclick="filterPortfolio('wedding')">Wedding Moments</button>
+            <button class="filter-btn" onclick="filterPortfolio('drone')">Drone Shots</button>
+            <button class="filter-btn" onclick="filterPortfolio('nature')">Nature</button>
+            <button class="filter-btn" onclick="filterPortfolio('cinematic')">Cinematic Videos</button>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item" data-category="wedding">
+                <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="Wedding">
+                <div class="portfolio-overlay">
+                    <span>Wedding Moments</span>
+                    <h4>Traditional Kandyan Elegance</h4>
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="drone">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Drone View">
+                <div class="portfolio-overlay">
+                    <span>Drone Shots</span>
+                    <h4>Sigiriya Aerial Horizon</h4>
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="nature">
+                <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80" alt="Nature">
+                <div class="portfolio-overlay">
+                    <span>Nature Photography</span>
+                    <h4>Ella Misty Mountains</h4>
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="cinematic">
+                <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80" alt="Cinematic">
+                <div class="portfolio-overlay">
+                    <span>Cinematic Videos</span>
+                    <h4>Galle Fort Sunset Vibe</h4>
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="wedding">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Wedding">
+                <div class="portfolio-overlay">
+                    <span>Wedding Moments</span>
+                    <h4>Sunset Beach Reception</h4>
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="drone">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Drone">
+                <div class="portfolio-overlay">
+                    <span>Drone Shots</span>
+                    <h4>Mirissa Coastline Wave</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipment Section -->
+    <section id="equipment">
+        <div class="section-header">
+            <span>High-End Tech</span>
+            <h2>Our Professional Equipment</h2>
+        </div>
+        <div class="equipment-grid">
+            <div class="equipment-card">
+                <i class="fa-solid fa-helicopter"></i>
+                <h3>DJI Air 3S Drone</h3>
+                <p>Dual-primary cameras for immaculate 4K aerial shots and precise landscape tracking.</p>
+            </div>
+            <div class="equipment-card">
+                <i class="fa-solid fa-video-camera"></i>
+                <h3>Professional Cameras</h3>
+                <p>Full-frame cinema line sensors ensuring ultra-sharp low-light performance and dynamic range.</p>
+            </div>
+            <div class="equipment-card">
+                <i class="fa-solid fa-sliders"></i>
+                <h3>DJI Gimbals</h3>
+                <p>3-axis motorized stabilization for silky-smooth cinematic tracking movements.</p>
+            </div>
+            <div class="equipment-card">
+                <i class="fa-solid fa-microphone-lines"></i>
+                <h3>Wireless Microphones</h3>
+                <p>Crystal clear audio recording systems for crisp vows, speeches, and ambient soundscapes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking & Contact Section -->
+    <section id="booking">
+        <div class="section-header">
+            <span>Get In Touch</span>
+            <h2>Book Your Shoot & Contact Us</h2>
+        </div>
+        <div class="contact-booking-grid">
+            <!-- Booking Form -->
+            <div class="form-container">
+                <h3 style="font-family:'Cinzel',serif; margin-bottom:25px; color:var(--gold-light);">Reserve Your Date</h3>
+                <form id="booking-form" onsubmit="handleBooking(event)">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" class="form-control" required placeholder="Kamal Perera">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" class="form-control" required placeholder="+94 77 123 4567">
+                    </div>
+                    <div class="form-group">
+                        <label>Event Type</label>
+                        <select class="form-control">
+                            <option>Wedding Photography</option>
+                            <option>Wedding Videography</option>
+                            <option>Drone Aerial Shoot</option>
+                            <option>Event Coverage</option>
+                            <option>Commercial Production</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Event Date</label>
+                        <input type="date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Message / Special Requirements</label>
+                        <textarea class="form-control" placeholder="Share venue details or custom requests..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-gold" style="width:100%;">Submit Booking Request</button>
+                </form>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="contact-info-box" id="contact">
+                <h3 style="font-family:'Cinzel',serif; margin-bottom:25px; color:var(--gold-light);">Studio Information</h3>
+                <p style="color:var(--text-muted); margin-bottom:30px; font-size:0.95rem;">Connect with our team directly for custom packages, destination coverage across Sri Lanka, and immediate consultations.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon-wrap"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="contact-text">
+                            <h5>Location</h5>
+                            <p>Colombo & Kandy, Sri Lanka</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon-wrap"><i class="fa-solid fa-phone"></i></div>
+                        <div class="contact-text">
+                            <h5>Phone / Hotline</h5>
+                            <a href="tel:+94771234567">+94 77 123 4567</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon-wrap"><i class="fa-brands fa-whatsapp"></i></div>
+                        <div class="contact-text">
+                            <h5>WhatsApp</h5>
+                            <a href="https://wa.me/94771234567" target="_blank">+94 77 123 4567</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="social-btn"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Voice Assistant Widget & Modal -->
+    <div class="ai-assistant-widget">
+        <div class="ai-trigger-bubble" onclick="toggleAIModal()">
+            <div class="ai-pulse-ring"></div>
+            <i class="fa-solid fa-robot"></i>
+        </div>
+    </div>
+
+    <div class="ai-modal" id="aiModal">
+        <div class="ai-modal-header">
+            <div class="ai-header-info">
+                <div class="ai-avatar-small">AI</div>
+                <div>
+                    <h4>Egale AI Assistant</h4>
+                    <span>Online | Sinhala Voice Enabled</span>
+                </div>
+            </div>
+            <button class="ai-close-btn" onclick="toggleAIModal()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        
+        <div class="ai-chat-body" id="aiChatBody">
+            <div class="ai-message bot">
+                ආයුබෝවන්! මම Egale AI assistant. Egale View Photography වෙත ඔබව සාදරයෙන් පිළිගනිමු! මගෙන් ඔබට අවශ්‍ය සේවාවන්, booking තොරතුරු හෝ contact details ගැන අසන්න පුළුවන්.
+            </div>
+        </div>
+
+        <div class="voice-wave-container" id="voiceWave">
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+        </div>
+
+        <div class="ai-quick-prompts">
+            <div class="quick-prompt-chip" onclick="sendPromptText('ඔබගේ සේවාවන් මොනවාද?')">සේවාවන් මොනවාද?</div>
+            <div class="quick-prompt-chip" onclick="sendPromptText('Wedding photography තියෙනවද?')">Wedding photography</div>
+            <div class="quick-prompt-chip" onclick="sendPromptText('Drone shooting කරනවද?')">Drone shooting</div>
+            <div class="quick-prompt-chip" onclick="sendPromptText('Booking එකක් කරන්න ඕන')">Booking එකක්</div>
+            <div class="quick-prompt-chip" onclick="sendPromptText('ඔබගේ contact details දෙන්න')">Contact details</div>
+        </div>
+
+        <div class="ai-modal-footer">
+            <button class="ai-voice-trigger" id="aiMicBtn" onclick="startVoiceRecognition()" title="Click to speak in Sinhala">
+                <i class="fa-solid fa-microphone"></i>
+            </button>
+            <input type="text" class="ai-text-input" id="aiTextInput" placeholder="Type or speak in Sinhala..." onkeypress="handleKeyInput(event)">
+            <button class="btn-gold" style="padding: 10px 16px; border-radius: 20px; font-size: 0.85rem;" onclick="sendTypedMessage()">Send</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo"><i class="fa-solid fa-camera-retro"></i> EGALE VIEW PHOTOGRAPHY</div>
+            <p>&copy; 2026 Egale View Photography. All Rights Reserved. Crafted with Cinematic Excellence in Sri Lanka.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Implementation -->
+    <script>
+        /* Particle Animation Background */
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particlesArray = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2;
+                this.speedX = (Math.random() - 0.5) * 0.5;
+                this.speedY = (Math.random() - 0.5) * 0.5;
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX = -this.speedX;
+                if (this.y < 0 || this.y > canvas.height) this.speedY = -this.speedY;
+            }
+            draw() {
+                ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particlesArray = [];
+            for (let i = 0; i < 70; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particlesArray.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        initParticles();
+        animateParticles();
+
+        /* Portfolio Filtering */
+        function filterPortfolio(category) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const items = document.querySelectorAll('.portfolio-item');
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        /* Booking form submission handler */
+        function handleBooking(e) {
+            e.preventDefault();
+            alert('ස්තුතියි! ඔබේ Booking ඉල්ලීම සාර්ථකව ලැබුණී. අපි ඉක්මනින්ම ඔබව සම්බන්ධ කර ගන්නෙමු.');
+            document.getElementById('booking-form').reset();
+        }
+
+        /* AI Voice Assistant Logic */
+        function toggleAIModal() {
+            const modal = document.getElementById('aiModal');
+            modal.classList.toggle('active');
+        }
+
+        function appendMessage(text, sender) {
+            const chatBody = document.getElementById('aiChatBody');
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `ai-message ${sender}`;
+            msgDiv.textContent = text;
+            chatBody.appendChild(msgDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function processAIQuery(query) {
+            const q = query.toLowerCase().trim();
+            let reply = "මම ඔබගේ ප්‍රශ්නය තේරුම් ගැනීමට උත්සාහ කරමි. ඔබට අපගේ සේවාවන්, wedding photography, drone shooting හෝ booking ගැන අසන්න පුළුවන්.";
+
+            if (q.includes("සේවාවන්") || q.includes("services") || q.includes("service")) {
+                reply = "අපගේ සේවාවන් අතර Wedding Photography, Wedding Videography, Drone Aerial Photography, Event Coverage, Cinematic Video Production, Photo Editing සහ 4K Ultra HD Video Production ඇතුළත් වේ.";
+            } else if (q.includes("wedding") || q.includes("மணம்") || q.includes("웨딩")) {
+                reply = "ඔව්! අප විසින් අති උත්කර්ෂවත් අයුරින් Wedding Photography සහ Wedding Videography සේවාවන් සපයනු ලබයි.";
+            } else if (q.includes("drone") || q.includes("ඩ්‍රෝන්") || q.includes("aerial")) {
+                reply = "ඔව්, අපි DJI Air 3S ඩ්‍රෝන් මඟින් උසස් තත්ත්වයේ Drone Aerial Photography සහ Cinematic ඩ්‍රෝන් දර්ශන ලබා දෙන්නෙමු.";
+            } else if (q.includes("booking") || q.includes("reservation") || q.includes("දිනයක්")) {
+                reply = "Booking එකක් කිරීමට ඔබට අපගේ website එකේ ඇති Booking section එක භාවිතා කළ හැක. නැතහොත් +94 77 123 4567 අංකයට කතා කරන්න.";
+            } else if (q.includes("contact") || q.includes("phone") || q.includes("අංකය") || q.includes("ගන්න")) {
+                reply = "අපව සම්බන්ධ කර ගැනීමට: Phone / WhatsApp: +94 77 123 4567 හෝ Colombo & Kandy, Sri Lanka හි පිහිටි අපගේ ස්ටුඩියෝ වෙත පැමිණෙන්න.";
+            }
+
+            // Simulate slight thinking delay
+            setTimeout(() => {
+                appendMessage(reply, 'bot');
+                speakSinhalaResponse(reply);
+            }, 600);
+        }
+
+        function sendPromptText(text) {
+            appendMessage(text, 'user');
+            processAIQuery(text);
+        }
+
+        function sendTypedMessage() {
+            const input = document.getElementById('aiTextInput');
+            const text = input.value.trim();
+            if (text !== '') {
+                appendMessage(text, 'user');
+                input.value = '';
+                processAIQuery(text);
+            }
+        }
+
+        function handleKeyInput(e) {
+            if (e.key === 'Enter') {
+                sendTypedMessage();
+            }
+        }
+
+        /* Web Speech API - Sinhala Voice Recognition & TTS */
+        function startVoiceRecognition() {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const micBtn = document.getElementById('aiMicBtn');
+            const voiceWave = document.getElementById('voiceWave');
+
+            if (!SpeechRecognition) {
+                alert("Your browser does not support voice recognition. Please use Google Chrome.");
+                return;
+            }
+
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'si-LK'; // Sinhala (Sri Lanka)
+            recognition.interimResults = false;
+            recognition.maxAlternatives = 1;
+
+            recognition.onstart = function() {
+                micBtn.classList.add('listening');
+                voiceWave.classList.add('active');
+            };
+
+            recognition.onresult = function(event) {
+                const speechToText = event.results[0][0].transcript;
+                appendMessage(speechToText, 'user');
+                processAIQuery(speechToText);
+            };
+
+            recognition.onerror = function(event) {
+                console.error("Speech recognition error", event.error);
+                micBtn.classList.remove('listening');
+                voiceWave.classList.remove('active');
+            };
+
+            recognition.onend = function() {
+                micBtn.classList.remove('listening');
+                voiceWave.classList.remove('active');
+            };
+
+            recognition.start();
+        }
+
+        function speakSinhalaResponse(text) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'si-LK';
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+    </script>
+</body>
+</html>
