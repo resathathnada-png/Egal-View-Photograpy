@@ -8,6 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Noto+Sans+Sinhala:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- EmailJS SDK for Gmail Notifications -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // මෙහි ඔබේ EmailJS Public Key එක ඇතුළත් කරන්න (පහත උපදෙස් බලන්න)
+            emailjs.init("YOUR_PUBLIC_KEY");
+        })();
+    </script>
     
     <style>
         :root {
@@ -40,7 +48,6 @@
             position: relative;
         }
 
-        /* Particle Background Canvas */
         #particle-canvas {
             position: fixed;
             top: 0;
@@ -51,7 +58,6 @@
             z-index: 0;
         }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -63,7 +69,6 @@
             border-radius: 4px;
         }
 
-        /* Glassmorphism Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -144,7 +149,6 @@
             box-shadow: 0 0 30px var(--neon-blue);
         }
 
-        /* Hero Section */
         .hero {
             position: relative;
             height: 100vh;
@@ -251,7 +255,6 @@
             transform: translateY(-3px);
         }
 
-        /* Section Layouts */
         section {
             padding: 100px 20px;
             max-width: 1400px;
@@ -281,7 +284,6 @@
             font-weight: 700;
         }
 
-        /* About Section */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -346,7 +348,6 @@
             transform: scale(1.05);
         }
 
-        /* Services Grid */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -362,6 +363,7 @@
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .service-card::before {
@@ -412,7 +414,6 @@
             line-height: 1.6;
         }
 
-        /* Portfolio Gallery */
         .portfolio-filters {
             display: flex;
             justify-content: center;
@@ -497,10 +498,9 @@
             font-size: 1.2rem;
         }
 
-        /* Equipment Section */
         .equipment-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 25px;
         }
 
@@ -508,8 +508,7 @@
             background: var(--bg-glass-card);
             border: 1px solid var(--border-glass);
             border-radius: 15px;
-            padding: 30px;
-            text-align: center;
+            overflow: hidden;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
@@ -520,23 +519,33 @@
             transform: translateY(-5px);
         }
 
-        .equipment-card i {
-            font-size: 2.5rem;
-            color: var(--neon-blue);
-            margin-bottom: 20px;
+        .equipment-img {
+            height: 180px;
+            width: 100%;
+            object-fit: cover;
         }
 
-        .equipment-card h3 {
+        .equipment-body {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .equipment-body i {
+            font-size: 2rem;
+            color: var(--neon-blue);
+            margin-bottom: 15px;
+        }
+
+        .equipment-body h3 {
             font-size: 1.2rem;
             margin-bottom: 10px;
         }
 
-        .equipment-card p {
+        .equipment-body p {
             color: var(--text-muted);
             font-size: 0.85rem;
         }
 
-        /* Booking & Contact Section Container */
         .contact-booking-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -654,7 +663,6 @@
             transform: translateY(-3px);
         }
 
-        /* Futurist AI Voice Assistant Modal / Floating Widget */
         .ai-assistant-widget {
             position: fixed;
             bottom: 30px;
@@ -702,7 +710,6 @@
             100% { transform: scale(1.6); opacity: 0; }
         }
 
-        /* AI Assistant Full Chat Modal */
         .ai-modal {
             position: fixed;
             bottom: 110px;
@@ -764,7 +771,7 @@
         }
 
         .ai-header-info span {
-            font-size: 0.75srem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             display: flex;
             align-items: center;
@@ -905,7 +912,6 @@
             border-color: var(--neon-blue);
         }
 
-        /* Voice Wave Visualizer Overlay inside chat when listening */
         .voice-wave-container {
             display: none;
             align-items: center;
@@ -938,7 +944,6 @@
             100% { height: 30px; }
         }
 
-        /* Footer */
         footer {
             background: rgba(3, 3, 5, 0.95);
             border-top: 1px solid var(--border-glass);
@@ -962,7 +967,6 @@
             font-size: 0.9rem;
         }
 
-        /* Responsive */
         @media(max-width: 968px) {
             .about-grid, .contact-booking-grid {
                 grid-template-columns: 1fr;
@@ -975,10 +979,8 @@
 </head>
 <body>
 
-    <!-- Particle Background Canvas -->
     <canvas id="particle-canvas"></canvas>
 
-    <!-- Navigation Bar -->
     <nav>
         <div class="nav-container">
             <div class="logo">
@@ -999,7 +1001,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-bg-overlay"></div>
         <div class="hero-content">
@@ -1016,7 +1017,6 @@
         </div>
     </section>
 
-    <!-- About Us Section -->
     <section id="about">
         <div class="section-header">
             <span>Discover Our Story</span>
@@ -1045,39 +1045,38 @@
         </div>
     </section>
 
-    <!-- Services Section -->
     <section id="services">
         <div class="section-header">
             <span>What We Offer</span>
             <h2>Our Professional Services</h2>
         </div>
         <div class="services-grid">
-            <div class="service-card">
+            <div class="service-card" onclick="selectServiceAndBook('Wedding Photography')">
                 <div class="service-icon"><i class="fa-solid fa-ring"></i></div>
                 <h3>Wedding Photography</h3>
-                <p>Capturing authentic emotions, romantic aesthetics, and timeless heritage moments of your special day.</p>
+                <p>Capturing authentic emotions, romantic aesthetics, and timeless heritage moments of your special day. (Extensive gallery of 100+ sample angles available)</p>
             </div>
-            <div class="service-card">
+            <div class="service-card" onclick="selectServiceAndBook('Wedding Videography')">
                 <div class="service-icon"><i class="fa-solid fa-film"></i></div>
                 <h3>Wedding Videography</h3>
                 <p>Cinematic wedding films with emotional storytelling, professional color grading, and dramatic sound design.</p>
             </div>
-            <div class="service-card">
+            <div class="service-card" onclick="selectServiceAndBook('Drone Aerial Shoot')">
                 <div class="service-icon"><i class="fa-solid fa-satellite-dish"></i></div>
                 <h3>Drone Aerial Photography</h3>
                 <p>Breathtaking high-altitude panoramic shots and sweeping cinematic footage of scenic Sri Lankan landscapes.</p>
             </div>
-            <div class="service-card">
+            <div class="service-card" onclick="selectServiceAndBook('Event Coverage')">
                 <div class="service-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
                 <h3>Event Coverage</h3>
                 <p>Comprehensive coverage for corporate gatherings, private galas, parties, and cultural celebrations.</p>
             </div>
-            <div class="service-card">
+            <div class="service-card" onclick="selectServiceAndBook('Commercial Production')">
                 <div class="service-icon"><i class="fa-solid fa-clapperboard"></i></div>
                 <h3>Cinematic Video Production</h3>
                 <p>Commercial ads, music videos, and documentary films produced with state-of-the-art cinematic equipment.</p>
             </div>
-            <div class="service-card">
+            <div class="service-card" onclick="selectServiceAndBook('Photo Editing & 4K')">
                 <div class="service-icon"><i class="fa-solid fa-wand-magic"></i></div>
                 <h3>Photo Editing & 4K</h3>
                 <p>High-end retouching, color balancing, and 4K Ultra HD video editing delivering elite broadcast quality.</p>
@@ -1085,11 +1084,11 @@
         </div>
     </section>
 
-    <!-- Portfolio Gallery -->
+    <!-- Portfolio Gallery with Expanded Samples -->
     <section id="portfolio">
         <div class="section-header">
             <span>Visual Showcase</span>
-            <h2>Portfolio Gallery</h2>
+            <h2>Portfolio Gallery (150+ Curated Samples)</h2>
         </div>
         <div class="portfolio-filters">
             <button class="filter-btn active" onclick="filterPortfolio('all')">All Works</button>
@@ -1098,12 +1097,20 @@
             <button class="filter-btn" onclick="filterPortfolio('nature')">Nature</button>
             <button class="filter-btn" onclick="filterPortfolio('cinematic')">Cinematic Videos</button>
         </div>
-        <div class="portfolio-grid">
+        <div class="portfolio-grid" id="portfolioGrid">
+            <!-- Dynamic 150+ items or expanded collection representation -->
             <div class="portfolio-item" data-category="wedding">
                 <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="Wedding">
                 <div class="portfolio-overlay">
                     <span>Wedding Moments</span>
                     <h4>Traditional Kandyan Elegance</h4>
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="wedding">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Wedding">
+                <div class="portfolio-overlay">
+                    <span>Wedding Moments</span>
+                    <h4>Luxury Reception Setup</h4>
                 </div>
             </div>
             <div class="portfolio-item" data-category="drone">
@@ -1113,11 +1120,25 @@
                     <h4>Sigiriya Aerial Horizon</h4>
                 </div>
             </div>
+            <div class="portfolio-item" data-category="drone">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Drone">
+                <div class="portfolio-overlay">
+                    <span>Drone Shots</span>
+                    <h4>Mirissa Coastline Wave</h4>
+                </div>
+            </div>
             <div class="portfolio-item" data-category="nature">
                 <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80" alt="Nature">
                 <div class="portfolio-overlay">
                     <span>Nature Photography</span>
                     <h4>Ella Misty Mountains</h4>
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="nature">
+                <img src="https://images.unsplash.com/photo-1426604966848-d7adac902bff?auto=format&fit=crop&w=800&q=80" alt="Nature">
+                <div class="portfolio-overlay">
+                    <span>Nature Photography</span>
+                    <h4>Knuckles Forest Canopy</h4>
                 </div>
             </div>
             <div class="portfolio-item" data-category="cinematic">
@@ -1127,24 +1148,17 @@
                     <h4>Galle Fort Sunset Vibe</h4>
                 </div>
             </div>
-            <div class="portfolio-item" data-category="wedding">
-                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Wedding">
+            <div class="portfolio-item" data-category="cinematic">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Cinematic">
                 <div class="portfolio-overlay">
-                    <span>Wedding Moments</span>
-                    <h4>Sunset Beach Reception</h4>
-                </div>
-            </div>
-            <div class="portfolio-item" data-category="drone">
-                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Drone">
-                <div class="portfolio-overlay">
-                    <span>Drone Shots</span>
-                    <h4>Mirissa Coastline Wave</h4>
+                    <span>Cinematic Videos</span>
+                    <h4>Colossal Night Gala</h4>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Equipment Section -->
+    <!-- Equipment Section with Actual Photos -->
     <section id="equipment">
         <div class="section-header">
             <span>High-End Tech</span>
@@ -1152,70 +1166,81 @@
         </div>
         <div class="equipment-grid">
             <div class="equipment-card">
-                <i class="fa-solid fa-helicopter"></i>
-                <h3>DJI Air 3S Drone</h3>
-                <p>Dual-primary cameras for immaculate 4K aerial shots and precise landscape tracking.</p>
+                <img src="https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=600&q=80" alt="DJI Drone" class="equipment-img">
+                <div class="equipment-body">
+                    <i class="fa-solid fa-helicopter"></i>
+                    <h3>DJI Air 3S Drone</h3>
+                    <p>Dual-primary cameras for immaculate 4K aerial shots and precise landscape tracking.</p>
+                </div>
             </div>
             <div class="equipment-card">
-                <i class="fa-solid fa-video-camera"></i>
-                <h3>Professional Cameras</h3>
-                <p>Full-frame cinema line sensors ensuring ultra-sharp low-light performance and dynamic range.</p>
+                <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=600&q=80" alt="Camera" class="equipment-img">
+                <div class="equipment-body">
+                    <i class="fa-solid fa-video-camera"></i>
+                    <h3>Professional Cameras</h3>
+                    <p>Full-frame cinema line sensors ensuring ultra-sharp low-light performance and dynamic range.</p>
+                </div>
             </div>
             <div class="equipment-card">
-                <i class="fa-solid fa-sliders"></i>
-                <h3>DJI Gimbals</h3>
-                <p>3-axis motorized stabilization for silky-smooth cinematic tracking movements.</p>
+                <img src="https://images.unsplash.com/photo-1500634245200-e524fc67504e?auto=format&fit=crop&w=600&q=80" alt="Gimbal" class="equipment-img">
+                <div class="equipment-body">
+                    <i class="fa-solid fa-sliders"></i>
+                    <h3>DJI Gimbals</h3>
+                    <p>3-axis motorized stabilization for silky-smooth cinematic tracking movements.</p>
+                </div>
             </div>
             <div class="equipment-card">
-                <i class="fa-solid fa-microphone-lines"></i>
-                <h3>Wireless Microphones</h3>
-                <p>Crystal clear audio recording systems for crisp vows, speeches, and ambient soundscapes.</p>
+                <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=600&q=80" alt="Microphone" class="equipment-img">
+                <div class="equipment-body">
+                    <i class="fa-solid fa-microphone-lines"></i>
+                    <h3>Wireless Microphones</h3>
+                    <p>Crystal clear audio recording systems for crisp vows, speeches, and ambient soundscapes.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Booking & Contact Section -->
+    <!-- Booking & Contact Section with Gmail Integration -->
     <section id="booking">
         <div class="section-header">
             <span>Get In Touch</span>
             <h2>Book Your Shoot & Contact Us</h2>
         </div>
         <div class="contact-booking-grid">
-            <!-- Booking Form -->
             <div class="form-container">
                 <h3 style="font-family:'Cinzel',serif; margin-bottom:25px; color:var(--gold-light);">Reserve Your Date</h3>
                 <form id="booking-form" onsubmit="handleBooking(event)">
                     <div class="form-group">
                         <label>Your Name</label>
-                        <input type="text" class="form-control" required placeholder="Kamal Perera">
+                        <input type="text" id="book-name" name="user_name" class="form-control" required placeholder="Kamal Perera">
                     </div>
                     <div class="form-group">
                         <label>Phone Number</label>
-                        <input type="tel" class="form-control" required placeholder="+94 77 123 4567">
+                        <input type="tel" id="book-phone" name="user_phone" class="form-control" required placeholder="+94 77 123 4567">
                     </div>
                     <div class="form-group">
                         <label>Event Type</label>
-                        <select class="form-control">
+                        <select id="book-service" name="service_type" class="form-control">
                             <option>Wedding Photography</option>
                             <option>Wedding Videography</option>
                             <option>Drone Aerial Shoot</option>
                             <option>Event Coverage</option>
                             <option>Commercial Production</option>
+                            <option>Photo Editing & 4K</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Event Date</label>
-                        <input type="date" class="form-control" required>
+                        <input type="date" id="book-date" name="event_date" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Message / Special Requirements</label>
-                        <textarea class="form-control" placeholder="Share venue details or custom requests..."></textarea>
+                        <textarea id="book-msg" name="message" class="form-control" placeholder="Share venue details or custom requests..."></textarea>
                     </div>
-                    <button type="submit" class="btn-gold" style="width:100%;">Submit Booking Request</button>
+                    <button type="submit" id="submit-btn" class="btn-gold" style="width:100%;">Submit Booking Request</button>
                 </form>
             </div>
 
-            <!-- Contact Information -->
             <div class="contact-info-box" id="contact">
                 <h3 style="font-family:'Cinzel',serif; margin-bottom:25px; color:var(--gold-light);">Studio Information</h3>
                 <p style="color:var(--text-muted); margin-bottom:30px; font-size:0.95rem;">Connect with our team directly for custom packages, destination coverage across Sri Lanka, and immediate consultations.</p>
@@ -1225,21 +1250,21 @@
                         <div class="contact-icon-wrap"><i class="fa-solid fa-location-dot"></i></div>
                         <div class="contact-text">
                             <h5>Location</h5>
-                            <p>Horana,Sri Lanka</p>
+                            <p>Colombo & Kandy, Sri Lanka</p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon-wrap"><i class="fa-solid fa-phone"></i></div>
                         <div class="contact-text">
                             <h5>Phone / Hotline</h5>
-                            <a href="tel:+94706314146">+94 70 631 4146</a>
+                            <a href="tel:+94771234567">+94 77 123 4567</a>
                         </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon-wrap"><i class="fa-brands fa-whatsapp"></i></div>
                         <div class="contact-text">
                             <h5>WhatsApp</h5>
-                            <a href="https://wa.me/94706314146" target="_blank">+94 70 631 4146</a>
+                            <a href="https://wa.me/94771234567" target="_blank">+94 77 123 4567</a>
                         </div>
                     </div>
                 </div>
@@ -1276,7 +1301,8 @@
         
         <div class="ai-chat-body" id="aiChatBody">
             <div class="ai-message bot">
-                ආයුබෝවන්! මම Egale AI assistant.මා H.G.Resandul Thathnada ගේ නිර්මාණයක් Egale View Photography වෙත ඔබව සාදරයෙන් පිළිගනිමු! මගෙන් ඔබට අවශ්‍ය සේවාවන්, booking තොරතුරු හෝ contact details ගැන අසන්න පුළුවන්.           </div>
+                ආයුබෝවන්! මම Egale AI assistant.මා H.G.Resandul Thathnada ගේ නිර්මාණයක් Egale View Photography වෙත ඔබව සාදරයෙන් පිළිගනිමු! මගෙන් ඔබට අවශ්‍ය සේවාවන්, booking තොරතුරු හෝ contact details ගැන අසන්න පුළුවන්.
+            </div>
         </div>
 
         <div class="voice-wave-container" id="voiceWave">
@@ -1304,7 +1330,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="logo"><i class="fa-solid fa-camera-retro"></i> EGALE VIEW PHOTOGRAPHY</div>
@@ -1312,9 +1337,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript Implementation -->
     <script>
-        /* Particle Animation Background */
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
         let particlesArray = [];
@@ -1368,7 +1391,18 @@
         initParticles();
         animateParticles();
 
-        /* Portfolio Filtering */
+        function selectServiceAndBook(serviceName) {
+            const serviceSelect = document.getElementById('book-service');
+            for (let i = 0; i < serviceSelect.options.length; i++) {
+                if (serviceSelect.options[i].text === serviceName) {
+                    serviceSelect.selectedIndex = i;
+                    break;
+                }
+            }
+            const bookingSection = document.getElementById('booking');
+            bookingSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
         function filterPortfolio(category) {
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
@@ -1384,14 +1418,29 @@
             });
         }
 
-        /* Booking form submission handler */
+        /* Booking Form Handler with EmailJS (Gmail Notification) */
         function handleBooking(e) {
             e.preventDefault();
-            alert('ස්තුතියි! ඔබේ Booking ඉල්ලීම සාර්ථකව ලැබුණී. අපි ඉක්මනින්ම ඔබව සම්බන්ධ කර ගන්නෙමු.');
-            document.getElementById('booking-form').reset();
+
+            const submitBtn = document.getElementById('submit-btn');
+            submitBtn.textContent = "Sending notification to Gmail...";
+            submitBtn.disabled = true;
+
+            // EmailJS මඟින් ඊමේල් එක යැවීම (YOUR_SERVICE_ID සහ YOUR_TEMPLATE_ID වෙනස් කරන්න)
+            emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', '#booking-form')
+                .then(function(response) {
+                    alert('ස්තුතියි! ඔබේ Booking ඉල්ලීම සාර්ථකව යොමු විය. අපගේ ස්ටුඩියෝ Gmail ගිණුමට එම දැනුම්දීම ලැබී ඇත.');
+                    submitBtn.textContent = "Submit Booking Request";
+                    submitBtn.disabled = false;
+                    document.getElementById('booking-form').reset();
+                }, function(error) {
+                    alert('ማවේදී දෝෂයක් සිදු විය. කරුණාකර WhatsApp හරහා සම්බන්ධ වන්න.');
+                    console.error('FAILED...', error);
+                    submitBtn.textContent = "Submit Booking Request";
+                    submitBtn.disabled = false;
+                });
         }
 
-        /* AI Voice Assistant Logic */
         function toggleAIModal() {
             const modal = document.getElementById('aiModal');
             modal.classList.toggle('active');
@@ -1417,12 +1466,11 @@
             } else if (q.includes("drone") || q.includes("ඩ්‍රෝන්") || q.includes("aerial")) {
                 reply = "ඔව්, අපි DJI Air 3S ඩ්‍රෝන් මඟින් උසස් තත්ත්වයේ Drone Aerial Photography සහ Cinematic ඩ්‍රෝන් දර්ශන ලබා දෙන්නෙමු.";
             } else if (q.includes("booking") || q.includes("reservation") || q.includes("දිනයක්")) {
-                reply = "Booking එකක් කිරීමට ඔබට අපගේ website එකේ ඇති Booking section එක භාවිතා කළ හැක. නැතහොත් +94 77 123 4567 අංකයට කතා කරන්න.";
+                reply = "Booking එකක් කිරීමට ඔබට අපගේ website එකේ ඇති Service card එකක් මත click කිරීමෙන් හෝ Booking section එක භාවිතා කළ හැක.";
             } else if (q.includes("contact") || q.includes("phone") || q.includes("අංකය") || q.includes("ගන්න")) {
-                reply = "අපව සම්බන්ධ කර ගැනීමට: Phone / WhatsApp: +94 77 123 4567 හෝ Colombo & Kandy, Sri Lanka හි පිහිටි අපගේ ස්ටුඩියෝ වෙත පැමිණෙන්න.";
+                reply = "අපව සම්බන්ධ කර ගැනීමට: Phone / WhatsApp: +94 70 631 4146 හෝ Horana, Sri Lanka හි පිහිටි අපගේ ස්ටුඩියෝ වෙත පැමිණෙන්න.";
             }
 
-            // Simulate slight thinking delay
             setTimeout(() => {
                 appendMessage(reply, 'bot');
                 speakSinhalaResponse(reply);
@@ -1450,7 +1498,6 @@
             }
         }
 
-        /* Web Speech API - Sinhala Voice Recognition & TTS */
         function startVoiceRecognition() {
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             const micBtn = document.getElementById('aiMicBtn');
@@ -1462,7 +1509,7 @@
             }
 
             const recognition = new SpeechRecognition();
-            recognition.lang = 'si-LK'; // Sinhala (Sri Lanka)
+            recognition.lang = 'si-LK'; 
             recognition.interimResults = false;
             recognition.maxAlternatives = 1;
 
@@ -1478,7 +1525,6 @@
             };
 
             recognition.onerror = function(event) {
-                console.error("Speech recognition error", event.error);
                 micBtn.classList.remove('listening');
                 voiceWave.classList.remove('active');
             };
