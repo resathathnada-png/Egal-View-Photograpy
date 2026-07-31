@@ -1420,6 +1420,17 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         }
+        function openEquipmentDetail(equipmentName) {
+            document.getElementById('equipmentMainGrid').style.display = 'none';
+            document.getElementById('equipmentDetailView').style.display = 'block';
+            window.scrollTo({ top: document.getElementById('equipment').offsetTop - 80, behavior: 'smooth' });
+        }
+
+        function closeEquipmentDetail() {
+            document.getElementById('equipmentDetailView').style.display = 'none';
+            document.getElementById('equipmentMainGrid').style.display = 'grid';
+            window.scrollTo({ top: document.getElementById('equipment').offsetTop - 80, behavior: 'smooth' });
+        }
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
