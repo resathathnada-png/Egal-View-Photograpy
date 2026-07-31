@@ -1275,6 +1275,78 @@
             </div>
         </div>
     </section>
+    <!-- Equipment Section with Clickable Feature -->
+    <section id="equipment">
+        <div class="section-header">
+            <span>High-End Tech</span>
+            <h2>Our Professional Equipment</h2>
+        </div>
+        
+        <!-- Main Equipment Grid -->
+        <div class="equipment-grid" id="equipmentMainGrid">
+            <!-- DJI Air 3S Drone Card -->
+            <div class="equipment-card" onclick="openEquipmentDetail('DJI Air 3S Drone')" style="cursor: pointer;">
+                <img src="https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=600&q=80" alt="DJI Drone" class="equipment-img">
+                <div class="equipment-body">
+                    <i class="fa-solid fa-helicopter"></i>
+                    <h3>DJI Air 3S Drone</h3>
+                    <p>Dual-primary cameras for immaculate 4K aerial shots and precise landscape tracking. (Click to view)</p>
+                </div>
+            </div>
+
+            <!-- Professional Cameras Card (Updated with Click & Pricing Support) -->
+            <div class="equipment-card" onclick="openEquipmentDetail('Professional Cameras')" style="cursor: pointer;">
+                <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=600&q=80" alt="Camera" class="equipment-img">
+                <div class="equipment-body">
+                    <i class="fa-solid fa-video-camera"></i>
+                    <h3>Professional Cameras</h3>
+                    <p>Full-frame cinema line sensors ensuring ultra-sharp low-light performance. (Click to view)</p>
+                </div>
+            </div>
+
+            <!-- DJI Gimbals Card -->
+            <div class="equipment-card" onclick="openEquipmentDetail('DJI Gimbals')" style="cursor: pointer;">
+                <img src="https://images.unsplash.com/photo-1500634245200-e524fc67504e?auto=format&fit=crop&w=600&q=80" alt="Gimbal" class="equipment-img">
+                <div class="equipment-body">
+                    <i class="fa-solid fa-sliders"></i>
+                    <h3>DJI Gimbals</h3>
+                    <p>3-axis motorized stabilization for silky-smooth cinematic tracking movements. (Click to view)</p>
+                </div>
+            </div>
+
+            <!-- Wireless Microphones Card -->
+            <div class="equipment-card" onclick="openEquipmentDetail('Wireless Microphones')" style="cursor: pointer;">
+                <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=600&q=80" alt="Microphone" class="equipment-img">
+                <div class="equipment-body">
+                    <i class="fa-solid fa-microphone-lines"></i>
+                    <h3>Wireless Microphones</h3>
+                    <p>Crystal clear audio recording systems for crisp vows and speeches. (Click to view)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dynamic Detail View (Appears on Click for any Equipment) -->
+        <div id="equipmentDetailView" style="display: none; margin-top: 40px;">
+            <button onclick="closeEquipmentDetail()" class="btn-glass" style="margin-bottom: 30px;"><i class="fa-solid fa-arrow-left"></i> Back to Equipment</button>
+            
+            <div style="text-align: center; margin-bottom: 40px;" id="detailHeaderContainer">
+                <!-- JavaScript මඟින් අදාළ මාතෘකාව සහ විස්තර මෙහි පෙන්වනු ඇත -->
+            </div>
+
+            <!-- Vertical Photos Scroll List (ඡායාරූප එකින් එක පහළට දිස්වන ස්ථානය) -->
+            <div id="detailPhotosContainer" style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px;">
+                <!-- ඡායාරූප එකින් එක මෙහි లోඩ් වේ -->
+            </div>
+
+            <!-- Pricing Section (මිල ගණන් දැක්වෙන කොටස) -->
+            <div style="max-width: 1000px; margin: 60px auto 0 auto;">
+                <h3 style="font-family:'Cinzel',serif; text-align:center; margin-bottom: 30px; color:var(--gold-primary);">Package Pricing</h3>
+                <div id="detailPricingContainer" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+                    <!-- මිල ගණන් පැකේජ මෙහි లోඩ් වේ -->
+                </div>
+            </div>
+        </div>
+    </section>
             <div class="equipment-card">
                 <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=600&q=80" alt="Camera" class="equipment-img">
                 <div class="equipment-body">
@@ -1284,7 +1356,7 @@
                 </div>
             </div>
             <div class="equipment-card">
-                <img src="https://images.unsplash.com/photo-1500634245200-e524fc67504e?auto=format&fit=crop&w=600&q=80" alt="Gimbal" class="equipment-img">
+                <img src="https://gppro.in/wp-content/uploads/2026/02/DJI-10-800x800.jpg" alt="Gimbal" class="equipment-img">
                 <div class="equipment-body">
                     <i class="fa-solid fa-sliders"></i>
                     <h3>DJI Gimbals</h3>
@@ -1292,7 +1364,7 @@
                 </div>
             </div>
             <div class="equipment-card">
-                <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=600&q=80" alt="Microphone" class="equipment-img">
+                <img src="https://www.shutterstock.com/image-photo/dji-osmo-pocket-gimbal-camera-wireless-2683574269?trackingId=9de95984-1300-451b-a517-3d40a37bb4d1&listId=searchResults" alt="Microphone" class="equipment-img">
                 <div class="equipment-body">
                     <i class="fa-solid fa-microphone-lines"></i>
                     <h3>Wireless Microphones</h3>
