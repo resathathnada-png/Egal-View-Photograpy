@@ -1160,122 +1160,67 @@
 
     <!-- Equipment Section with Actual Photos -->
     #@@@@#@#@@@@@@@@#@#@#@##@#@#@##@
-<!-- Equipment Section with Clickable DJI Air 3S Feature -->
-    <section id="equipment">
-        <div class="section-header">
-            <span>High-End Tech</span>
-            <h2>Our Professional Equipment</h2>
-        </div>
+<!-- Hidden Detail View for Professional Cameras -->
+    <div id="equipmentDetailView" style="display: block; margin-top: 40px;">
+        <button onclick="closeEquipmentDetail()" class="btn-glass" style="margin-bottom: 30px;"><i class="fa-solid fa-arrow-left"></i> Back to Equipment</button>
         
-        <!-- Main Equipment Grid -->
-        <div class="equipment-grid" id="equipmentMainGrid">
-            <div class="equipment-card" onclick="openEquipmentDetail('DJI Air 3S Drone')" style="cursor: pointer;">
-                <img src="https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=600&q=80" alt="DJI Drone" class="equipment-img">
-                <div class="equipment-body">
-                    <i class="fa-solid fa-helicopter"></i>
-                    <h3>DJI Air 3S Drone</h3>
-                    <p>Dual-primary cameras for immaculate 4K aerial shots and precise landscape tracking. (Click to view gallery & prices)</p>
-                </div>
-            </div>
-            <div class="equipment-card">
-                <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=600&q=80" alt="Camera" class="equipment-img">
-                <div class="equipment-body">
-                    <i class="fa-solid fa-video-camera"></i>
-                    <h3>Professional Cameras</h3>
-                    <p>Full-frame cinema line sensors ensuring ultra-sharp low-light performance.</p>
-                </div>
-            </div>
-            <div class="equipment-card">
-                <img src="https://images.unsplash.com/photo-1500634245200-e524fc67504e?auto=format&fit=crop&w=600&q=80" alt="Gimbal" class="equipment-img">
-                <div class="equipment-body">
-                    <i class="fa-solid fa-sliders"></i>
-                    <h3>DJI Gimbals</h3>
-                    <p>3-axis motorized stabilization for silky-smooth cinematic tracking movements.</p>
-                </div>
-            </div>
-            <div class="equipment-card">
-                <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=600&q=80" alt="Microphone" class="equipment-img">
-                <div class="equipment-body">
-                    <i class="fa-solid fa-microphone-lines"></i>
-                    <h3>Wireless Microphones</h3>
-                    <p>Crystal clear audio recording systems for crisp vows and speeches.</p>
-                </div>
-            </div>
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2 style="font-family:'Cinzel',serif; color:var(--gold-light); font-size: 2.5rem;">Professional Cameras - Complete Gallery & Pricing</h2>
+            <p style="color:var(--text-muted);">Full-frame cinema line sensors ensuring ultra-sharp low-light performance and cinematic shots.</p>
         </div>
 
-        <!-- Hidden Detail View for DJI Air 3S (Appears on Click) -->
-        <div id="equipmentDetailView" style="display: none; margin-top: 40px;">
-            <button onclick="closeEquipmentDetail()" class="btn-glass" style="margin-bottom: 30px;"><i class="fa-solid fa-arrow-left"></i> Back to Equipment</button>
+        <!-- Vertical Photos Scroll List (පින්තූර එකින් එක පහළට නිවැරදිව පෙන්වීම සඳහා) -->
+        <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px;">
             
-            <div style="text-align: center; margin-bottom: 40px;">
-                <h2 style="font-family:'Cinzel',serif; color:var(--gold-light); font-size: 2.5rem;">DJI Air 3S - Complete Gallery & Pricing</h2>
-                <p style="color:var( --text-muted);">Explore high-resolution aerial shots and official rental/purchase package rates below.</p>
+            <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass); background: var(--bg-glass-card);">
+                <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1200&q=80" style="width:100%; display:block;" alt="Camera Shot 1">
+                <div style="padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 01: Studio Portrait Setup</div>
             </div>
 
-            <!-- Vertical Photos Scroll List (අදාළ ඩ්‍රෝන් ෆොටෝස් එකින් එක පහළට) -->
-            <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px;">
-                <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass);">
-                    <img src="https://images.unsplash.com/photo-1527977966376-1c8408f9f108?auto=format&fit=crop&w=1200&q=80" style="width:100%; display:block;" alt="DJI Shot 1">
-                    <div style="background:var(--bg-glass-card); padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 01: Aerial Panorama View</div>
-                </div>
-                <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass);">
-                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" style="width:100%; display:block;" alt="DJI Shot 2">
-                    <div style="background:var(--bg-glass-card); padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 02: Cinematic Landscape Tracking Part 1</div>
-                </div>
-                <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass);">
-                    <img src="https://images.unsplash.com/photo-1574611122955-5baa61496637?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c3JpbGFua2F8ZW58MHx8MHx8fDA%3D" style="width:100%; display:block;" alt="DJI Shot 3">
-                    <div style="background:var(--bg-glass-card); padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 03: Cinematic Landscape TrackingPart 2</div>
-                </div>
-                <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass);">
-                    <img src="https://images.unsplash.com/photo-1612862862126-865765df2ded?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3JpbGFua2F8ZW58MHx8MHx8fDA%3D" style="width:100%; display:block;" alt="DJI Shot 4">
-                    <div style="background:var(--bg-glass-card); padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 04: Drone Reveal Shot</div>
-                </div>
-                <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass);">
-                    <img src="https://i.pinimg.com/736x/a3/23/c2/a323c29483571e6c7f53bab75c687e70.jpg" style="width:100%; display:block;" alt="DJI Shot 5">
-                    <div style="background:var(--bg-glass-card); padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 05: High Angle Overview</div>
-                </div>
-                <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass);">
-                    <img src="https://as1.ftcdn.net/jpg/03/11/68/40/1000_F_311684069_HWkpTY5bxlv2hv4iFvPicfxbq3mvwzI3.webp" style="width:100%; display:block;" alt="DJI Shot 6">
-                    <div style="background:var(--bg-glass-card); padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 06: Establishing Wide Shot</div>
-                </div>
-                <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass);">
-                    <img src="https://media.sciencephoto.com/image/f0389470/800wm/F0389470-Aerial_view_of_Colombo_Skyline_along_the_coast,_Sri_Lanka.jpg" style="width:100%; display:block;" alt="DJI Shot 7">
-                    <div style="background:var(--bg-glass-card); padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 07: Cinematic Shot</div>
-                </div>
-                <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass);">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwkA52r-4t64RQSPlONN-4UIrSq2JDXZ1-FYv88AoeV4wLGACLkrvH-mIj&s=10" style="width:100%; display:block;" alt="DJI Shot 8">
-                    <div style="background:var(--bg-glass-card); padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 08: Birds Tracking</div>
-                </div>
-                <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass);">
-                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80" style="width:100%; display:block;" alt="DJI Shot 9">
-                    <div style="background:var(--bg-glass-card); padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 09: Coastal Sunset Flight</div>
-                </div>
-                <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass);">
-                    <img src="https://t4.ftcdn.net/jpg/11/29/42/07/240_F_1129420787_ONQezUGAComjquWVfO7wdFxrraPe4szd.jpg" style="width:100%; display:block;" alt="DJI Shot 10">
-                    <div style="background:var(--bg-glass-card); padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 10: Egale View Shots</div>
-                </div>
+            <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass); background: var(--bg-glass-card);">
+                <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=1200&q=80" style="width:100%; display:block;" alt="Camera Shot 2">
+                <div style="padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 02: Low-Light Cinematic Frame</div>
             </div>
 
-            <!-- Pricing Section (මිල ගණන් දැක්වෙන කොටස) -->
-            <div style="max-width: 1000px; margin: 60px auto 0 auto;">
-                <h3 style="font-family:'Cinzel',serif; text-align:center; margin-bottom: 30px; color:var(--gold-primary);">Package Pricing</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
-                    <div style="background:var(--bg-glass-card); border:1px solid var(--border-glass); padding:30px; border-radius:15px; text-align:center;">
-                        <h4 style="font-size:1.2rem; margin-bottom:15px;">Half Day Shoot</h4>
-                        <div style="font-size:2rem; font-weight:700; color:var(--gold-light); margin-bottom:15px;">LKR 7,500</div>
-                        <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;">Includes pilot, DJI Air 3S drone, and 4K raw footage delivery.</p>
-                        <button onclick="selectServiceAndBook('Drone Aerial Shoot')" class="btn-gold" style="width:100%;">Book This</button>
-                    </div>
-                    <div style="background:var(--bg-glass-card); border:1px solid var(--neon-blue); box-shadow:var(--neon-glow); padding:30px; border-radius:15px; text-align:center;">
-                        <h4 style="font-size:1.2rem; margin-bottom:15px; color:var(--neon-blue);">Full Day Cinematic</h4>
-                        <div style="font-size:2rem; font-weight:700; color:var(--gold-light); margin-bottom:15px;">LKR 15,000</div>
-                        <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;">Full day coverage, multi-battery setup, and advanced color grading.</p>
-                        <button onclick="selectServiceAndBook('Drone Aerial Shoot')" class="btn-gold" style="width:100%;">Book This</button>
-                    </div>
+            <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass); background: var(--bg-glass-card);">
+                <img src="https://images.unsplash.com/photo-1512790182412-b19e6d62bc39?auto=format&fit=crop&w=1200&q=80" style="width:100%; display:block;" alt="Camera Shot 3">
+                <div style="padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 03: External Lens Configuration</div>
+            </div>
+
+            <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass); background: var(--bg-glass-card);">
+                <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=1200&q=80" style="width:100%; display:block;" alt="Camera Shot 4">
+                <div style="padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 04: Vintage Body Overview</div>
+            </div>
+
+            <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass); background: var(--bg-glass-card);">
+                <img src="https://images.unsplash.com/photo-1495707902414-c260bb9587ff?auto=format&fit=crop&w=1200&q=80" style="width:100%; display:block;" alt="Camera Shot 5">
+                <div style="padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 05: Action Tracking View</div>
+            </div>
+
+        </div>
+
+        <!-- Pricing Section (මිල ගණන් දැක්වෙන කොටස) -->
+        <div style="max-width: 1000px; margin: 60px auto 0 auto;">
+            <h3 style="font-family:'Cinzel',serif; text-align:center; margin-bottom: 30px; color:var(--gold-primary);">Package Pricing</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+                
+                <div style="background:var(--bg-glass-card); border:1px solid var(--border-glass); padding:30px; border-radius:15px; text-align:center;">
+                    <h4 style="font-size:1.2rem; margin-bottom:15px;">Half Day Shoot</h4>
+                    <div style="font-size:2rem; font-weight:700; color:var(--gold-light); margin-bottom:15px;">LKR 3,500</div>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;">Includes professional operator, camera setup, and 4K raw footage delivery.</p>
+                    <button onclick="selectServiceAndBook('Cinematic Camera Shoot')" class="btn-gold" style="width:100%;">Book This</button>
                 </div>
+
+                <div style="background:var(--bg-glass-card); border:1px solid var(--neon-blue); box-shadow:var(--neon-glow); padding:30px; border-radius:15px; text-align:center;">
+                    <h4 style="font-size:1.2rem; margin-bottom:15px; color:var(--neon-blue);">Full Day Cinematic</h4>
+                    <div style="font-size:2rem; font-weight:700; color:var(--gold-light); margin-bottom:15px;">LKR 5,000</div>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;">Full day coverage, multi-lens setup, and advanced color grading.</p>
+                    <button onclick="selectServiceAndBook('Cinematic Camera Shoot')" class="btn-gold" style="width:100%;">Book This</button>
+                </div>
+
             </div>
         </div>
-    </section>
+    </div>
     #####################################################################################
         <!-- Hidden Detail View for DJI Air 3S (Appears on Click) -->
         <div id="equipmentDetailView" style="display: none; margin-top: 40px;">
