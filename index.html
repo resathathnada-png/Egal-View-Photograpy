@@ -1272,79 +1272,119 @@
             </div>
         </div>
     </section>
-            <!-- Hidden Detail View for Professional Cameras (Appears on Click) -->
-        <div id="equipmentDetailView" style="display: none; margin-top: 40px;">
-            <button onclick="closeEquipmentDetail()" class="btn-glass" style="margin-bottom: 30px;"><i class="fa-solid fa-arrow-left"></i> Back to Equipment</button>
-            
-            <div style="text-align: center; margin-bottom: 40px;">
-                <h2 style="font-family:'Cinzel',serif; color:var(--gold-light); font-size: 2.5rem;"> Professional Cameras - Complete Gallery & Pricing</h2>
-                <p style="color:var( --text-muted);">Explore high-resolution aerial shots and official rental/purchase package rates below.</p>
+          <!-- Equipment Section -->
+<section id="equipment">
+    <div class="section-header">
+        <span>High-End Tech</span>
+        <h2>Our Professional Equipment</h2>
+    </div>
+    
+    <!-- Main Equipment Grid -->
+    <div class="equipment-grid" id="equipmentMainGrid">
+        <!-- Professional Cameras Card (Clickable) -->
+        <div class="equipment-card" onclick="openEquipmentDetail('Professional Cameras')" style="cursor: pointer;">
+            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=600&q=80" alt="Camera" class="equipment-img">
+            <div class="equipment-body">
+                <i class="fa-solid fa-video-camera"></i>
+                <h3>Professional Cameras</h3>
+                <p>Full-frame cinema line sensors ensuring ultra-sharp low-light performance. (Click to view)</p>
             </div>
+        </div>
+    </div>
 
-            <!-- Vertical Photos Scroll List (අදාළ camera ෆොටෝස් එකින් එක පහළට) -->
-            <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px;">
-                <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass);">
-                    <img src="https://media.craiyon.com/2025-10-12/IxJGWzoyRlupRB0z3_WNmA.webp" style="width:100%; display:block;" alt="Camera Shot 1">
-                    <div style="background:var(--bg-glass-card); padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 01: Aerial Panorama View</div>
-                </div>
-                <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass);">
-                    <img src="https://www.cunard.com/dam/inventory-assets/ports/CLB/CLB.jpg" style="width:100%; display:block;" alt="Camera Shot 2">
-                    <div style="background:var(--bg-glass-card); padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 02: Cinematic Landscape Tracking Part 1</div>
-                </div>
-                <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass);">
-                    <img src="https://d1bv4heaa2n05k.cloudfront.net/user-images/1533635353234/shutterstock-358175291_destinationMain_1533635373763.jpeg" style="width:100%; display:block;" alt="Camera Shot 3">
-                    <div style="background:var(--bg-glass-card); padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 03: Cinematic Landscape TrackingPart 2</div>
-                </div>
-                <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass);">
-                    <img src="https://sripada.org/images/adams-peak-stairs.jpg" style="width:100%; display:block;" alt="Camera Shot 4">
-                    <div style="background:var(--bg-glass-card); padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 04: Drone Reveal Shot</div>
-                </div>
-                <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass);">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEEFnjG4IPMlCxAY1z-tf907Gugzz7UE7V1zlx9zA-uQ&s=10" style="width:100%; display:block;" alt="Camera Shot 5">
-                    <div style="background:var(--bg-glass-card); padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 05: High Angle Overview</div>
-                </div>
-                <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass);">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6lUrblK9yo6BTflN6FUjevunKF-_lxG0SDf-lT-9-JJHLOyDuSGtuZ34&s=10" style="width:100%; display:block;" alt="Camera Shot 6">
-                    <div style="background:var(--bg-glass-card); padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 06: Establishing Wide Shot</div>
-                </div>
-                <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass);">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAsSmcGpnHHMslkYS-YkCfqvtawm9E2bLKfJCoW0Vcs33nd7KE6fgS7Ps&s=10" style="width:100%; display:block;" alt="Camera Shot 7">
-                    <div style="background:var(--bg-glass-card); padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 07: Cinematic Shot</div>
-                </div>
-                <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass);">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdViCp2cL0f095kGyixjmnCXBI6X2Bzh280lftn7GGfQ&s=10" style="width:100%; display:block;" alt="Camera Shot 8">
-                    <div style="background:var(--bg-glass-card); padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 08: Birds Tracking</div>
-                </div>
-                <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass);">
-                    <img src="https://t4.ftcdn.net/jpg/03/22/53/53/360_F_322535378_f2I0DBWZpMIUz6DQdFGzBgasc9uE3CKY.jpg" style="width:100%; display:block;" alt="Camera Shot 9">
-                    <div style="background:var(--bg-glass-card); padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 09: Coastal Sunset Flight</div>
-                </div>
-                <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass);">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQS2YJAvdJEOHYzT7Gi-YurP063ZGu6grKPd6Nhyl4VboNN5rQBLJUOdmE&s=10" style="width:100%; display:block;" alt="Camera Shot 10">
-                    <div style="background:var(--bg-glass-card); padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 10: Egale View Shots</div>
-                </div>
+    <!-- Hidden Detail View for Professional Cameras (Appears on Click) -->
+    <div id="equipmentDetailView" style="display: none; margin-top: 40px;">
+        <button onclick="closeEquipmentDetail()" class="btn-glass" style="margin-bottom: 30px;"><i class="fa-solid fa-arrow-left"></i> Back to Equipment</button>
+        
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2 style="font-family:'Cinzel',serif; color:var(--gold-light); font-size: 2.5rem;">Professional Cameras - Complete Gallery & Pricing</h2>
+            <p style="color:var(--text-muted);">Explore high-resolution camera angles and official rental/purchase package rates below.</p>
+        </div>
+
+        <!-- Vertical Photos Scroll List (අදාළ camera ෆොටෝස් එකින් එක පහළට) -->
+        <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px;">
+            <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass); background: var(--bg-glass-card);">
+                <img src="https://media.craiyon.com/2025-10-12/IxJGWzoyRlupRB0z3_WNmA.webp" style="width:100%; display:block;" alt="Camera Shot 1">
+                <div style="padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 01: Aerial Panorama View</div>
             </div>
+            <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass); background: var(--bg-glass-card);">
+                <img src="https://www.cunard.com/dam/inventory-assets/ports/CLB/CLB.jpg" style="width:100%; display:block;" alt="Camera Shot 2">
+                <div style="padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 02: Cinematic Landscape Tracking Part 1</div>
+            </div>
+            <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass); background: var(--bg-glass-card);">
+                <img src="https://d1bv4heaa2n05k.cloudfront.net/user-images/1533635353234/shutterstock-358175291_destinationMain_1533635373763.jpeg" style="width:100%; display:block;" alt="Camera Shot 3">
+                <div style="padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 03: Cinematic Landscape Tracking Part 2</div>
+            </div>
+            <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass); background: var(--bg-glass-card);">
+                <img src="https://sripada.org/images/adams-peak-stairs.jpg" style="width:100%; display:block;" alt="Camera Shot 4">
+                <div style="padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 04: Drone Reveal Shot</div>
+            </div>
+            <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass); background: var(--bg-glass-card);">
+                <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80" style="width:100%; display:block;" alt="Camera Shot 5">
+                <div style="padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 05: High Angle Overview</div>
+            </div>
+            <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass); background: var(--bg-glass-card);">
+                <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=800&q=80" style="width:100%; display:block;" alt="Camera Shot 6">
+                <div style="padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 06: Establishing Wide Shot</div>
+            </div>
+            <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass); background: var(--bg-glass-card);">
+                <img src="https://images.unsplash.com/photo-1512790182412-b19e6d62bc39?auto=format&fit=crop&w=800&q=80" style="width:100%; display:block;" alt="Camera Shot 7">
+                <div style="padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 07: Cinematic Shot</div>
+            </div>
+            <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass); background: var(--bg-glass-card);">
+                <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=800&q=80" style="width:100%; display:block;" alt="Camera Shot 8">
+                <div style="padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 08: Birds Tracking</div>
+            </div>
+            <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass); background: var(--bg-glass-card);">
+                <img src="https://t4.ftcdn.net/jpg/03/22/53/53/360_F_322535378_f2I0DBWZpMIUz6DQdFGzBgasc9uE3CKY.jpg" style="width:100%; display:block;" alt="Camera Shot 9">
+                <div style="padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 09: Coastal Sunset Flight</div>
+            </div>
+            <div style="border-radius: 15px; overflow: hidden; border: 1px solid var(--border-glass); background: var(--bg-glass-card);">
+                <img src="https://images.unsplash.com/photo-1495707902414-c260bb9587ff?auto=format&fit=crop&w=800&q=80" style="width:100%; display:block;" alt="Camera Shot 10">
+                <div style="padding: 15px; text-align:center; color:var(--gold-primary); font-weight:600;">Angle 10: Eagle View Shots</div>
+            </div>
+        </div>
 
-            <!-- Pricing Section (මිල ගණන් දැක්වෙන කොටස) -->
-            <div style="max-width: 1000px; margin: 60px auto 0 auto;">
-                <h3 style="font-family:'Cinzel',serif; text-align:center; margin-bottom: 30px; color:var(--gold-primary);">Package Pricing</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
-                    <div style="background:var(--bg-glass-card); border:1px solid var(--border-glass); padding:30px; border-radius:15px; text-align:center;">
-                        <h4 style="font-size:1.2rem; margin-bottom:15px;">Half Day Shoot</h4>
-                        <div style="font-size:2rem; font-weight:700; color:var(--gold-light); margin-bottom:15px;">LKR 10,000</div>
-                        <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;">Includes pilot, Professional Cameras, and 4K raw footage delivery.</p>
-                        <button onclick="selectServiceAndBook('Cinamatic Camera Shoot')" class="btn-gold" style="width:100%;">Book This</button>
-                    </div>
-                    <div style="background:var(--bg-glass-card); border:1px solid var(--neon-blue); box-shadow:var(--neon-glow); padding:30px; border-radius:15px; text-align:center;">
-                        <h4 style="font-size:1.2rem; margin-bottom:15px; color:var(--neon-blue);">Full Day Cinematic</h4>
-                        <div style="font-size:2rem; font-weight:700; color:var(--gold-light); margin-bottom:15px;">LKR 15,000</div>
-                        <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;">Full day coverage, multi-battery setup, and advanced color grading.</p>
-                        <button onclick="selectServiceAndBook('Cinamatic Camera Shoot')" class="btn-gold" style="width:100%;">Book This</button>
-                    </div>
+        <!-- Pricing Section (මිල ගණන් දැක්වෙන කොටස) -->
+        <div style="max-width: 1000px; margin: 60px auto 0 auto;">
+            <h3 style="font-family:'Cinzel',serif; text-align:center; margin-bottom: 30px; color:var(--gold-primary);">Package Pricing</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+                <div style="background:var(--bg-glass-card); border:1px solid var(--border-glass); padding:30px; border-radius:15px; text-align:center;">
+                    <h4 style="font-size:1.2rem; margin-bottom:15px;">Half Day Shoot</h4>
+                    <div style="font-size:2rem; font-weight:700; color:var(--gold-light); margin-bottom:15px;">LKR 10,000</div>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;">Includes operator, Professional Cameras, and 4K raw footage delivery.</p>
+                    <button onclick="selectServiceAndBook('Cinematic Camera Shoot')" class="btn-gold" style="width:100%;">Book This</button>
+                </div>
+                <div style="background:var(--bg-glass-card); border:1px solid var(--neon-blue); box-shadow:var(--neon-glow); padding:30px; border-radius:15px; text-align:center;">
+                    <h4 style="font-size:1.2rem; margin-bottom:15px; color:var(--neon-blue);">Full Day Cinematic</h4>
+                    <div style="font-size:2rem; font-weight:700; color:var(--gold-light); margin-bottom:15px;">LKR 15,000</div>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:20px;">Full day coverage, multi-battery setup, and advanced color grading.</p>
+                    <button onclick="selectServiceAndBook('Cinematic Camera Shoot')" class="btn-gold" style="width:100%;">Book This</button>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<!-- අත්‍යවශ්‍ය JavaScript කේතය (මෙය ඔබේ Script ෆයිල් එකේ හෝ SCRIPT ටැග් එකක් තුළ තිබිය යුතුය) -->
+<script>
+function openEquipmentDetail(equipmentName) {
+    // මේන් ග්‍රිඩ් එක සඟවයි
+    document.getElementById('equipmentMainGrid').style.display = 'none';
+    // ඩීටේල් විව් එක (ගැලරිය සහ මිල ගණන්) පෙන්වයි
+    document.getElementById('equipmentDetailView').style.display = 'block';
+    // පේජ් එක උඩටම ස්ක්‍රෝල් කරයි
+    window.scrollTo({ top: document.getElementById('equipment').offsetTop - 50, behavior: 'smooth' });
+}
+
+function closeEquipmentDetail() {
+    // ඩීටේල් විව් එක වසයි
+    document.getElementById('equipmentDetailView').style.display = 'none';
+    // මේන් ග්‍රිඩ් එක නැවත පෙන්වයි
+    document.getElementById('equipmentMainGrid').style.display = 'grid';
+    window.scrollTo({ top: document.getElementById('equipment').offsetTop - 50, behavior: 'smooth' });
+}
+</script>
 
     <!-- Booking & Contact Section with Gmail Integration -->
     <section id="booking">
