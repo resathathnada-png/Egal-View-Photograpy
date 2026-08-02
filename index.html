@@ -1741,29 +1741,29 @@ function closeEquipmentDetail() {
             }
         }
     </script>
-    <!-- JavaScript Function (මෙය HTML ෆයිල් එකේ පහළටම, </body> ටැග් එකට උඩින් දාන්න) -->
+<!-- Safe Event Listener Script -->
 <script>
-function openEquipmentDetail(equipmentName) {
-    const mainGrid = document.getElementById('equipmentMainGrid');
-    const detailView = document.getElementById('equipmentDetailView');
-    
-    if(mainGrid && detailView) {
-        mainGrid.style.display = 'none';
-        detailView.style.display = 'block';
-        window.scrollTo({ top: document.getElementById('equipment').offsetTop - 20, behavior: 'smooth' });
-    }
-}
+document.addEventListener("DOMContentLoaded", function() {
+    const cardBtn = document.getElementById('cameraCardBtn');
+    const backBtn = document.getElementById('backToEquipBtn');
+    const mainGrid = document.getElementById('cameraMainGrid');
+    const detailView = document.getElementById('cameraDetailView');
+    const section = document.getElementById('equipment');
 
-function closeEquipmentDetail() {
-    const mainGrid = document.getElementById('equipmentMainGrid');
-    const detailView = document.getElementById('equipmentDetailView');
-    
-    if(mainGrid && detailView) {
-        detailView.style.display = 'none';
-        mainGrid.style.display = 'grid';
-        window.scrollTo({ top: document.getElementById('equipment').offsetTop - 20, behavior: 'smooth' });
+    if(cardBtn && backBtn && mainGrid && detailView) {
+        cardBtn.addEventListener('click', function() {
+            mainGrid.style.display = 'none';
+            detailView.style.display = 'block';
+            section.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        backBtn.addEventListener('click', function() {
+            detailView.style.display = 'none';
+            mainGrid.style.display = 'grid';
+            section.scrollIntoView({ behavior: 'smooth' });
+        });
     }
-}
+});
 </script>
 </body>
 </html>
