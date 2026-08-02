@@ -1272,7 +1272,7 @@
             </div>
         </div>
     </section>
-          <!-- Equipment Section -->
+    <!-- Equipment Section -->
 <section id="equipment">
     <div class="section-header">
         <span>High-End Tech</span>
@@ -1385,7 +1385,6 @@ function closeEquipmentDetail() {
     window.scrollTo({ top: document.getElementById('equipment').offsetTop - 50, behavior: 'smooth' });
 }
 </script>
-
     <!-- Booking & Contact Section with Gmail Integration -->
     <section id="booking">
         <div class="section-header">
@@ -1742,5 +1741,29 @@ function closeEquipmentDetail() {
             }
         }
     </script>
+    <!-- JavaScript Function (මෙය HTML ෆයිල් එකේ පහළටම, </body> ටැග් එකට උඩින් දාන්න) -->
+<script>
+function openEquipmentDetail(equipmentName) {
+    const mainGrid = document.getElementById('equipmentMainGrid');
+    const detailView = document.getElementById('equipmentDetailView');
+    
+    if(mainGrid && detailView) {
+        mainGrid.style.display = 'none';
+        detailView.style.display = 'block';
+        window.scrollTo({ top: document.getElementById('equipment').offsetTop - 20, behavior: 'smooth' });
+    }
+}
+
+function closeEquipmentDetail() {
+    const mainGrid = document.getElementById('equipmentMainGrid');
+    const detailView = document.getElementById('equipmentDetailView');
+    
+    if(mainGrid && detailView) {
+        detailView.style.display = 'none';
+        mainGrid.style.display = 'grid';
+        window.scrollTo({ top: document.getElementById('equipment').offsetTop - 20, behavior: 'smooth' });
+    }
+}
+</script>
 </body>
 </html>
