@@ -1527,7 +1527,7 @@ function closeEquipmentDetail() {
             submitBtn.disabled = true;
 
             // EmailJS මඟින් ඊමේල් එක යැවීම (YOUR_SERVICE_ID සහ YOUR_TEMPLATE_ID වෙනස් කරන්න)
-            emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', '#booking-form')
+            emailjs.sendForm('service_3vkncay', 'templates/ho5ote7', '#booking-form')
                 .then(function(response) {
                     alert('ස්තුතියි! ඔබේ Booking ඉල්ලීම සාර්ථකව යොමු විය. අපගේ ස්ටුඩියෝ Gmail ගිණුමට එම දැනුම්දීම ලැබී ඇත.');
                     submitBtn.textContent = "Submit Booking Request";
