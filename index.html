@@ -14,6 +14,12 @@
         (function() {
             // මෙහි ඔබේ EmailJS Public Key එක ඇතුළත් කරන්න (පහත උපදෙස් බලන්න)
             emailjs.init("resathathnada@gmail.com");
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+            <script type="text/javascript">
+               (function(){
+                  emailjs.init("RY9lYGr43Rqus9cFU");
+               })();
+            </script>
         })();
     </script>
     
@@ -1526,42 +1532,21 @@ function closeEquipmentDetail() {
             submitBtn.textContent = "Sending notification to Gmail...";
             submitBtn.disabled = true;
 
+            // EmailJS මඟින් ඊමේල් එක යැවීම (YOUR_SERVICE_ID සහ YOUR_TEMPLATE_ID වෙනස් කරන්න)
+            emailjs.sendForm('service_3vkncay', 'template_u5oiky6', '#booking-form')
+                .then(function(response) {
+                    alert('ස්තුතියි! ඔබේ Booking ඉල්ලීම සාර්ථකව යොමු විය. අපගේ ස්ටුඩියෝ Gmail ගිණුමට එම දැනුම්දීම ලැබී ඇත.');
+                    submitBtn.textContent = "Submit Booking Request";
+                    submitBtn.disabled = false;
+                    document.getElementById('booking-form').reset();
+                }, function(error) {
+                    alert('ማවේදී දෝෂයක් සිදු විය. කරුණාකර WhatsApp හරහා සම්බන්ධ වන්න.');
+                    console.error('FAILED...', error);
+                    submitBtn.textContent = "Submit Booking Request";
+                    submitBtn.disabled = false;
+                });
+        }
 
-
-
-// 1. ඔබේ Public Key එක මෙතනට දාන්න (EmailJS Account එකෙන් ලබාගත් Public Key එක මෙහි 'YOUR_PUBLIC_KEY' වෙනුවට අලවන්න)
-(function(){
-    emailjs.init("RY9lYGr43Rqus9cFU");
-})();
-
-// 2. Form එක Submit වන විට ක්‍රියාත්මක වන කොටස
-document.getElementById('booking-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const submitBtn = document.getElementById('submitBtn'); // ඔබගේ Submit බොත්තමේ ID එක මෙයට සමාන විය යුතුය
-    if(submitBtn) {
-        submitBtn.textContent = "Sending notification to Gmail...";
-        submitBtn.disabled = true;
-    }
-
-    // EmailJS මඟින් ඊමේල් එක යැවීම
-    emailjs.sendForm('service_3vkncay', 'ho5ote7', '#booking-form')
-        .then(function(response) {
-            alert('ස්තුතියි! ඔබේ Booking ඉල්ලීම සාර්ථකව යොමු විය. අපගේ ස්ටුඩියෝ Gmail ගිණුමට එම දැනුම්දීම ලැබී ඇත.');
-            if(submitBtn) {
-                submitBtn.textContent = "Submit Booking Request";
-                submitBtn.disabled = false;
-            }
-            document.getElementById('booking-form').reset();
-        }, function(error) {
-            alert('දෝෂයක් සිදු විය. කරුණාකර WhatsApp හරහා සම්බන්ධ වන්න.');
-            console.error('FAILED...', error);
-            if(submitBtn) {
-                submitBtn.textContent = "Submit Booking Request";
-                submitBtn.disabled = false;
-            }
-        });
-});
         function toggleAIModal() {
             const modal = document.getElementById('aiModal');
             modal.classList.toggle('active');
